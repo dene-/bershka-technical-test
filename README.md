@@ -1,6 +1,8 @@
-# Nuxt Minimal Starter
+# Bershka Technical Test - Nuxt 3, Typescript and Vitest
 
-Look at the [Nuxt documentation](https://nuxt.com/docs/getting-started/introduction) to learn more.
+In this repo you can find Bershka's FE technical test. I decided to take a DDD approach to it, keeping it maintainable and simple, although maybe unnecessary because the requirement was simple.
+
+This app consists of on implementing a function to get a path given an array of categories (with their subcategories) and the path name. We have the categories domain entity
 
 ## Setup
 
@@ -71,5 +73,3 @@ yarn preview
 # bun
 bun run preview
 ```
-
-Check out the [deployment documentation](https://nuxt.com/docs/getting-started/deployment) for more information.
