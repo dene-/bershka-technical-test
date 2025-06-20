@@ -1,16 +1,16 @@
-import type { Category } from "./interfaces/categories.interfaces";
+import type { Category } from './interfaces/categories.interfaces';
 
 export const getCategoryPath = (
   categories: Category[],
-  categoryName: string
+  categoryName: string,
 ): string | undefined => {
   const findPath = (
     categoryNodes: Category[],
-    currentPath: string[] = []
+    currentPath: string[] = [],
   ): string[] | undefined => {
     for (const category of categoryNodes) {
       const newPath = [...currentPath, category.name];
-      
+
       if (category.name === categoryName) return newPath;
 
       if (category.subcategories.length > 0) {
@@ -21,11 +21,11 @@ export const getCategoryPath = (
     }
 
     return undefined;
-  }
-  
+  };
+
   const foundPath = findPath(categories);
 
   if (!foundPath) return undefined;
 
   return `/${foundPath.join('/')}`;
-}
+};

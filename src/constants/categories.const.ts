@@ -1,16 +1,16 @@
 export const CATEGORIES = [
   {
-    name: "category1",
+    name: 'category1',
     subcategories: [
       {
-        name: "category2",
+        name: 'category2',
         subcategories: [],
       },
       {
-        name: "category3",
+        name: 'category3',
         subcategories: [
           {
-            name: "category4",
+            name: 'category4',
             subcategories: [],
           },
         ],
@@ -18,7 +18,7 @@ export const CATEGORIES = [
     ],
   },
   {
-    name: "category5",
+    name: 'category5',
     subcategories: [],
   },
 ];
