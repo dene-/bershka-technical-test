@@ -14,8 +14,12 @@ export default withNuxt({
         objects: 'always-multiline',
         arrays: 'always-multiline',
         functions: 'always-multiline',
+        exports: 'always-multiline',
+        imports: 'always-multiline',
       },
     ],
     'newline-before-return': 'error',
+    'no-trailing-spaces': 'error',
+    'no-multiple-empty-lines': 'error',
   },
 });
