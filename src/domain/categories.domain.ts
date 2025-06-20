@@ -1,13 +1,8 @@
-export type CategoryName = string;
-
-export interface Category {
-  name: CategoryName;
-  subcategories: Category[];
-}
+import type { Category } from "./interfaces/categories.interfaces";
 
 export const getCategoryPath = (
   categories: Category[],
-  categoryName: CategoryName
+  categoryName: string
 ): string | undefined => {
   const findPath = (
     categoryNodes: Category[],
