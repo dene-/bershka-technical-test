@@ -1,5 +1,5 @@
 import { describe, test, expect } from 'vitest';
-import { getCategoryPath } from './categories.domain';
+import { getCategoryPath, getCategoryPathStack } from './categories.domain';
 import { MOCK_CATEGORIES } from '~/tests/mocks/categories.mock';
 
 export const getCategoryPathTestCases = [
@@ -35,6 +35,19 @@ describe('Categories domain', () => {
           const { expected } = testCase;
 
           expect(getCategoryPath(categories, categoryName)).toBe(expected);
+        });
+      });
+    });
+  });
+
+  describe('Given getCategoryPathStack function', () => {
+    getCategoryPathTestCases.forEach((testCase) => {
+      describe(`When categoryName is: ${testCase.input.categoryName}`, () => {
+        test(`Then the expected path will be: ${testCase.expected}`, () => {
+          const { categories, categoryName } = testCase.input;
+          const { expected } = testCase;
+
+          expect(getCategoryPathStack(categories, categoryName)).toBe(expected);
         });
       });
     });
