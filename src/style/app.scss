@@ -1,1 +1,126 @@
 @use "@picocss/pico/scss";
+@use "sass:map";
+
+$spacing-scale: (
+  0: 0rem,
+  1: 0.25rem,
+  2: 0.5rem,
+  3: 0.75rem,
+  4: 1rem,
+  5: 1.25rem,
+  6: 1.5rem
+);
+
+@mixin margin($direction, $size) {
+  @if map.has-key($spacing-scale, $size) {
+    @if $direction == 't' {
+      margin-top: map.get($spacing-scale, $size);
+    } @else if $direction == 'b' {
+      margin-bottom: map.get($spacing-scale, $size);
+    } @else if $direction == 'l' {
+      margin-left: map.get($spacing-scale, $size);
+    } @else if $direction == 'r' {
+      margin-right: map.get($spacing-scale, $size);
+    } @else if $direction == 'x' {
+      margin-left: map.get($spacing-scale, $size);
+      margin-right: map.get($spacing-scale, $size);
+    } @else if $direction == 'y' {
+      margin-top: map.get($spacing-scale, $size);
+      margin-bottom: map.get($spacing-scale, $size);
+    } @else {
+      margin: map.get($spacing-scale, $size);
+    }
+  }
+}
+
+@mixin padding($direction, $size) {
+  @if map.has-key($spacing-scale, $size) {
+    @if $direction == 't' {
+      padding-top: map.get($spacing-scale, $size);
+    } @else if $direction == 'b' {
+      padding-bottom: map.get($spacing-scale, $size);
+    } @else if $direction == 'l' {
+      padding-left: map.get($spacing-scale, $size);
+    } @else if $direction == 'r' {
+      padding-right: map.get($spacing-scale, $size);
+    } @else if $direction == 'x' {
+      padding-left: map.get($spacing-scale, $size);
+      padding-right: map.get($spacing-scale, $size);
+    } @else if $direction == 'y' {
+      padding-top: map.get($spacing-scale, $size);
+      padding-bottom: map.get($spacing-scale, $size);
+    } @else {
+      padding: map.get($spacing-scale, $size);
+    }
+  }
+}
+
+@mixin gap($size) {
+  @if map.has-key($spacing-scale, $size) {
+    gap: map.get($spacing-scale, $size);
+  }
+}
+
+@each $size, $value in $spacing-scale {
+  .mt-#{$size} { @include margin(t, $size); }
+  .mb-#{$size} { @include margin(b, $size); }
+  .ml-#{$size} { @include margin(l, $size); }
+  .mr-#{$size} { @include margin(r, $size); }
+  .mx-#{$size} { @include margin(x, $size); }
+  .my-#{$size} { @include margin(y, $size); }
+  .m-#{$size}  { @include margin('', $size); }
+  .pt-#{$size} { @include padding(t, $size); }
+  .pb-#{$size} { @include padding(b, $size); }
+  .pl-#{$size} { @include padding(l, $size); }
+  .pr-#{$size} { @include padding(r, $size); }
+  .px-#{$size} { @include padding(x, $size); }
+  .py-#{$size} { @include padding(y, $size); }
+  .p-#{$size}  { @include padding('', $size); }
+  .gap-#{$size} { @include gap($size); }
+}
+
+.flex { display: flex; }
+.inline-flex { display: inline-flex; }
+
+.flex-row           { flex-direction: row; }
+.flex-row-reverse   { flex-direction: row-reverse; }
+.flex-col           { flex-direction: column; }
+.flex-col-reverse   { flex-direction: column-reverse; }
+
+.flex-wrap          { flex-wrap: wrap; }
+.flex-nowrap        { flex-wrap: nowrap; }
+.flex-wrap-reverse  { flex-wrap: wrap-reverse; }
+
+.items-start     { align-items: flex-start; }
+.items-end       { align-items: flex-end; }
+.items-center    { align-items: center; }
+.items-baseline  { align-items: baseline; }
+.items-stretch   { align-items: stretch; }
+
+.justify-start    { justify-content: flex-start; }
+.justify-end      { justify-content: flex-end; }
+.justify-center   { justify-content: center; }
+.justify-between  { justify-content: space-between; }
+.justify-around   { justify-content: space-around; }
+.justify-evenly   { justify-content: space-evenly; }
+
+.content-start     { align-content: flex-start; }
+.content-end       { align-content: flex-end; }
+.content-center    { align-content: center; }
+.content-between   { align-content: space-between; }
+.content-around    { align-content: space-around; }
+.content-evenly    { align-content: space-evenly; }
+
+.self-auto      { align-self: auto; }
+.self-start     { align-self: flex-start; }
+.self-end       { align-self: flex-end; }
+.self-center    { align-self: center; }
+.self-stretch   { align-self: stretch; }
+.self-baseline  { align-self: baseline; }
+
+.flex-grow     { flex-grow: 1; }
+.flex-grow-0   { flex-grow: 0; }
+.flex-shrink   { flex-shrink: 1; }
+.flex-shrink-0 { flex-shrink: 0; }
+
+.w-full { width: 100%; }

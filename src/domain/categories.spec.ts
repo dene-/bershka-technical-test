@@ -1,5 +1,5 @@
 import { describe, test, expect } from 'vitest';
-import { getCategoryPath } from './categories.domain';
+import { getCategoryPath, getCategoryPathStack } from './categories.domain';
 import { MOCK_CATEGORIES } from '~/tests/mocks/categories.mock';
 
 export const getCategoryPathTestCases = [
@@ -8,8 +8,9 @@ export const getCategoryPathTestCases = [
     expected: '/Women/Clothing/Dresses',
   },
   {
+    // It will only match the first Sneakers category it finds, in this case in Women category
     input: { categories: MOCK_CATEGORIES, categoryName: 'Sneakers' },
-    expected: '/Women/Shoes/Sneakers', // First match found (Women branch)
+    expected: '/Women/Shoes/Sneakers',
   },
   {
     input: { categories: MOCK_CATEGORIES, categoryName: 'Boots' },
@@ -34,6 +35,19 @@ describe('Categories domain', () => {
           const { expected } = testCase;
 
           expect(getCategoryPath(categories, categoryName)).toBe(expected);
+        });
+      });
+    });
+  });
+
+  describe('Given getCategoryPathStack function', () => {
+    getCategoryPathTestCases.forEach((testCase) => {
+      describe(`When categoryName is: ${testCase.input.categoryName}`, () => {
+        test(`Then the expected path will be: ${testCase.expected}`, () => {
+          const { categories, categoryName } = testCase.input;
+          const { expected } = testCase;
+
+          expect(getCategoryPathStack(categories, categoryName)).toBe(expected);
         });
       });
     });

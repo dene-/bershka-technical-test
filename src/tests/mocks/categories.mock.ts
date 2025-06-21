@@ -1,4 +1,4 @@
-import type { Category } from '@/domain/interfaces/categories.interfaces';
+import type { Category } from '@/domain/categories.domain';
 
 export const MOCK_CATEGORIES: Category[] = [
   {
