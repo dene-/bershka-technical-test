@@ -1,31 +1,28 @@
 import type { Category } from './interfaces/categories.interfaces';
 
+/**
+ * Get's the path to a category in an array of categories.
+ * Caveat: it doesn't support categories with the same name, it'll always get the first path it finds.
+ * Ideally categories should have an id so we can get a category path with more specifiety.
+ * @param categories Array of categories
+ * @param categoryName The name of the category
+ * @returns Returns an string if the path was found, undefined if not
+ */
 export const getCategoryPath = (
   categories: Category[],
   categoryName: string,
 ): string | undefined => {
-  const findPath = (
-    categoryNodes: Category[],
-    currentPath: string[] = [],
-  ): string[] | undefined => {
-    for (const category of categoryNodes) {
-      const newPath = [...currentPath, category.name];
-
-      if (category.name === categoryName) return newPath;
-
-      if (category.subcategories.length > 0) {
-        const resultPath = findPath(category.subcategories, newPath);
-
-        if (resultPath) return resultPath;
-      }
+  for (const category of categories) {
+    if (category.name === categoryName) {
+      return `/${category.name}`;
     }
 
-    return undefined;
-  };
+    const subPath = getCategoryPath(category.subcategories, categoryName);
 
-  const foundPath = findPath(categories);
+    if (subPath) {
+      return `/${category.name}${subPath}`;
+    }
+  }
 
-  if (!foundPath) return undefined;
-
-  return `/${foundPath.join('/')}`;
+  return undefined;
 };
