@@ -1,4 +1,7 @@
-import type { Category } from './interfaces/categories.interfaces';
+export interface Category {
+  name: string;
+  subcategories: Category[];
+}
 
 /**
  * Get's the path to a category in an array of categories.
