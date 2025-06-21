@@ -1,5 +1,9 @@
 # Bershka Technical Test - Nuxt 3, Typescript and Vitest
 
+[![Tests](https://github.com/dene-/bershka-technical-test/actions/workflows/test.yml/badge.svg)](https://github.com/dene-/bershka-technical-test/actions/workflows/test.yml)
+[![Deploy](https://github.com/dene-/bershka-technical-test/actions/workflows/deploy.yml/badge.svg)](https://github.com/dene-/bershka-technical-test/actions/workflows/deploy.yml)
+[![Live Demo](https://img.shields.io/badge/demo-online-green.svg)](https://dene-.github.io/bershka-technical-test/)
+
 In this repo you can find Bershka's FE technical test. I decided to take a DDD approach to it, keeping it maintainable and simple (I know, overengineered).
 
 This app consists of implementing a function to get a path given an array of categories (with their subcategories) and the path name, `getCategoryPath`.
