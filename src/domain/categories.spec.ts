@@ -8,8 +8,9 @@ export const getCategoryPathTestCases = [
     expected: '/Women/Clothing/Dresses',
   },
   {
+    // It will only match the first Sneakers category it finds, in this case in Women category
     input: { categories: MOCK_CATEGORIES, categoryName: 'Sneakers' },
-    expected: '/Women/Shoes/Sneakers', // First match found (Women branch)
+    expected: '/Women/Shoes/Sneakers',
   },
   {
     input: { categories: MOCK_CATEGORIES, categoryName: 'Boots' },
